@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-secondary-dark dark:text-gray-100 font-body transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/20 shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary-light text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .card {
+    @apply glass rounded-xl p-6 shadow-xl;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
+  }
+  
+  .vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 100%);
+  }
+
+  /* Smooth image loading */
+  .bg-image-fade {
+    transition: opacity 1s ease-in-out;
+  }
+
+  /* Prevent flash of unstyled content */
+  .login-container {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+  }
+
+  /* Custom Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.5);
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(75, 85, 99, 0.7);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-ripple {
+    animation: ripple 0.6s ease-out;
+  }
+}
+
+/* Custom Toast Styles - Pill-shaped with circular icon */
+/* Target react-hot-toast container */
+div[role="status"],
+div[data-react-hot-toast] {
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  padding: 12px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-width: 200px !important;
+  max-width: 400px !important;
+  border: none !important;
+}
+
+/* Wrap icon in circular background */
+div[role="status"] > div:first-child,
+div[data-react-hot-toast] > div:first-child {
+  position: relative !important;
+}
+
+/* Success toast icon wrapper - green circle */
+div[role="status"][aria-live="polite"] > div:first-child::before,
+.toast-success > div:first-child::before {
+  content: '' !important;
+  position: absolute !important;
+  background-color: #10b981 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  z-index: -1 !important;
+}
+
+/* Error toast icon wrapper - red circle */
+div[role="status"][aria-live="assertive"] > div:first-child::before,
+.toast-error > div:first-child::before {
+  content: '' !important;
+  position: absolute !important;
+  background-color: #ef4444 !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  z-index: -1 !important;
+}
+
+/* Icon container styling */
+div[role="status"] > div:first-child {
+  background-color: transparent !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Success icon background */
+div[role="status"][aria-live="polite"] > div:first-child,
+.toast-success > div:first-child {
+  background-color: #10b981 !important;
+  border-radius: 50% !important;
+}
+
+/* Error icon background */
+div[role="status"][aria-live="assertive"] > div:first-child,
+.toast-error > div:first-child {
+  background-color: #ef4444 !important;
+  border-radius: 50% !important;
+}
+
+/* Ensure icon SVG is white and properly sized */
+div[role="status"] svg {
+  color: white !important;
+  fill: white !important;
+  width: 14px !important;
+  height: 14px !important;
+  stroke: white !important;
+  z-index: 1 !important;
+}
+
+/* Toast content text */
+div[role="status"] > div:last-child,
+div[role="status"] > span {
+  color: #1f2937 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+

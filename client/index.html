@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#FF7A00" />
+    <title>DineFlow AI - Smart Dining. Simplified.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Prevent flash of unstyled content - set default light theme */
+      html:not(.dark):not(.light) {
+        color-scheme: light;
+      }
+      html.light {
+        color-scheme: light;
+      }
+      html.dark {
+        color-scheme: dark;
+      }
+      body {
+        background-color: #f9fafb;
+        transition: background-color 0.3s ease;
+      }
+      html.dark body {
+        background-color: #111827;
+      }
+    </style>
+    <script>
+      // Apply theme immediately before any rendering to prevent flicker
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('theme-storage');
+          if (savedTheme) {
+            const parsed = JSON.parse(savedTheme);
+            const theme = parsed.state?.theme || 'light';
+            const root = document.documentElement;
+            
+            if (theme === 'auto') {
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              root.classList.remove('light', 'dark');
+              root.classList.add(prefersDark ? 'dark' : 'light');
+            } else {
+              root.classList.remove('light', 'dark');
+              root.classList.add(theme);
+            }
+          } else {
+            document.documentElement.classList.add('light');
+          }
+        } catch {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+
+
+
+

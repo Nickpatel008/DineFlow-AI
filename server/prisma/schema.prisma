@@ -1,0 +1,253 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  OWNER
+}
+
+enum TableStatus {
+  AVAILABLE
+  OCCUPIED
+  RESERVED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PREPARING
+  READY
+  COMPLETED
+  CANCELLED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+}
+
+enum SubscriptionPlanType {
+  BASIC
+  PRO
+  ENTERPRISE
+  CUSTOM
+}
+
+enum BillingCycle {
+  MONTHLY
+  YEARLY
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      UserRole @default(OWNER)
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Owner-specific fields
+  restaurantId String?     @unique
+  restaurant   Restaurant? @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@map("users")
+}
+
+model Restaurant {
+  id          String   @id @default(uuid())
+  name        String
+  address     String?
+  phone       String?
+  email       String?
+  logo        String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  owner        User?
+  tables       Table[]
+  menuItems    MenuItem[]
+  orders       Order[]
+  bills        Bill[]
+  subscription Subscription?
+
+  @@map("restaurants")
+}
+
+model Table {
+  id           String      @id @default(uuid())
+  restaurantId String
+  tableNumber  Int
+  capacity     Int         @default(4)
+  status       TableStatus @default(AVAILABLE)
+  qrCode       String?     @unique
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orders     Order[]
+
+  @@unique([restaurantId, tableNumber])
+  @@map("tables")
+}
+
+model MenuItem {
+  id            String   @id @default(uuid())
+  restaurantId  String
+  name          String
+  description   String?
+  aiDescription String? // AI-generated description
+  price         Float
+  category      String
+  image         String?
+  isAvailable   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orderItems OrderItem[]
+
+  @@map("menu_items")
+}
+
+model Order {
+  id           String      @id @default(uuid())
+  restaurantId String
+  tableId      String
+  orderNumber  String      @unique
+  status       OrderStatus @default(PENDING)
+  totalAmount  Float       @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  restaurant Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  table      Table       @relation(fields: [tableId], references: [id], onDelete: Cascade)
+  items      OrderItem[]
+  bill       Bill?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String
+  menuItemId String
+  quantity   Int
+  price      Float
+  subtotal   Float
+  createdAt  DateTime @default(now())
+
+  order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuItem MenuItem @relation(fields: [menuItemId], references: [id])
+
+  @@map("order_items")
+}
+
+model Bill {
+  id            String    @id @default(uuid())
+  restaurantId  String
+  orderId       String    @unique
+  billNumber    String    @unique
+  subtotal      Float
+  tax           Float     @default(0)
+  discount      Float     @default(0)
+  total         Float
+  paymentMethod String?
+  paidAt        DateTime?
+  createdAt     DateTime  @default(now())
+
+  restaurant Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  order      Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("bills")
+}
+
+model Offer {
+  id            String   @id @default(uuid())
+  restaurantId  String
+  title         String
+  description   String?
+  aiDescription String? // AI-generated offer description
+  discount      Float    @default(0)
+  category      String?
+  validFrom     DateTime
+  validUntil    DateTime
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("offers")
+}
+
+model SubscriptionPlan {
+  id           String               @id @default(uuid())
+  name         String
+  type         SubscriptionPlanType
+  description  String?
+  price        Float
+  billingCycle BillingCycle
+  features     String[] // JSON array of features
+  maxTables    Int? // Null = unlimited
+  maxMenuItems Int? // Null = unlimited
+  maxOrders    Int? // Null = unlimited
+  aiFeatures   Boolean              @default(false)
+  supportLevel String               @default("basic") // basic, priority, enterprise
+  isActive     Boolean              @default(true)
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+
+  subscriptions Subscription[]
+
+  @@map("subscription_plans")
+}
+
+model Subscription {
+  id                String             @id @default(uuid())
+  restaurantId      String             @unique
+  planId            String
+  status            SubscriptionStatus @default(TRIAL)
+  startDate         DateTime           @default(now())
+  endDate           DateTime?
+  nextBillingDate   DateTime?
+  cancelAtPeriodEnd Boolean            @default(false)
+  cancelledAt       DateTime?
+  trialEndsAt       DateTime?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  restaurant Restaurant            @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  plan       SubscriptionPlan      @relation(fields: [planId], references: [id])
+  payments   SubscriptionPayment[]
+
+  @@map("subscriptions")
+}
+
+model SubscriptionPayment {
+  id             String    @id @default(uuid())
+  subscriptionId String
+  amount         Float
+  currency       String    @default("USD")
+  paymentMethod  String? // stripe, paypal, etc.
+  transactionId  String? // External payment gateway transaction ID
+  status         String    @default("pending") // pending, completed, failed, refunded
+  paidAt         DateTime?
+  createdAt      DateTime  @default(now())
+
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@map("subscription_payments")
+}

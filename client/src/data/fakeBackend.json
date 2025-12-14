@@ -1,0 +1,846 @@
+{
+  "users": [
+    {
+      "id": "admin-1",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "role": "admin",
+      "restaurantId": null,
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "owner-1",
+      "email": "owner@italianbistro.com",
+      "password": "owner123",
+      "name": "Marco Rossi",
+      "role": "owner",
+      "restaurantId": "rest-1",
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "owner-2",
+      "email": "owner@sushihouse.com",
+      "password": "owner123",
+      "name": "Yuki Tanaka",
+      "role": "owner",
+      "restaurantId": "rest-2",
+      "createdAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "customer-1",
+      "email": "customer@example.com",
+      "password": "customer123",
+      "name": "John Customer",
+      "role": "customer",
+      "restaurantId": null,
+      "createdAt": "2024-01-26T10:00:00Z"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "rest-1",
+      "name": "Italian Bistro",
+      "address": "123 Main Street, New York, NY 10001",
+      "phone": "+1 (555) 123-4567",
+      "email": "info@italianbistro.com",
+      "logo": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200",
+      "images": [
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800",
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800",
+        "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800"
+      ],
+      "description": "Authentic Italian cuisine in the heart of the city. Our chefs use only the finest ingredients to create memorable dining experiences.",
+      "cuisineType": "Italian",
+      "capacity": 45,
+      "rating": 4.5,
+      "totalReviews": 128,
+      "priceRange": "$$",
+      "website": "https://www.italianbistro.com",
+      "socialMedia": {
+        "facebook": "facebook.com/italianbistro",
+        "instagram": "@italianbistro",
+        "twitter": "@italianbistro"
+      },
+      "operatingHours": {
+        "monday": { "open": "11:00", "close": "22:00" },
+        "tuesday": { "open": "11:00", "close": "22:00" },
+        "wednesday": { "open": "11:00", "close": "22:00" },
+        "thursday": { "open": "11:00", "close": "22:00" },
+        "friday": { "open": "11:00", "close": "23:00" },
+        "saturday": { "open": "11:00", "close": "23:00" },
+        "sunday": { "open": "12:00", "close": "21:00" }
+      },
+      "amenities": ["Wi-Fi", "Parking", "Outdoor Seating", "Wheelchair Accessible"],
+      "status": "active",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "rest-2",
+      "name": "Sushi House",
+      "address": "456 Oak Avenue, Los Angeles, CA 90001",
+      "phone": "+1 (555) 987-6543",
+      "email": "info@sushihouse.com",
+      "logo": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=200",
+      "images": [
+        "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800",
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800",
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"
+      ],
+      "description": "Fresh sushi and Japanese cuisine. Experience authentic flavors from Japan in a modern setting.",
+      "cuisineType": "Japanese",
+      "capacity": 30,
+      "rating": 4.7,
+      "totalReviews": 95,
+      "priceRange": "$$$",
+      "website": "https://www.sushihouse.com",
+      "socialMedia": {
+        "facebook": "facebook.com/sushihouse",
+        "instagram": "@sushihouse",
+        "twitter": "@sushihouse"
+      },
+      "operatingHours": {
+        "monday": { "open": "12:00", "close": "22:00" },
+        "tuesday": { "open": "12:00", "close": "22:00" },
+        "wednesday": { "open": "12:00", "close": "22:00" },
+        "thursday": { "open": "12:00", "close": "22:00" },
+        "friday": { "open": "12:00", "close": "23:00" },
+        "saturday": { "open": "12:00", "close": "23:00" },
+        "sunday": { "open": "12:00", "close": "21:00" }
+      },
+      "amenities": ["Wi-Fi", "Parking", "Live Music"],
+      "status": "active",
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "item-1",
+      "restaurantId": "rest-1",
+      "name": "Margherita Pizza",
+      "description": "Classic Italian pizza with fresh mozzarella and basil",
+      "aiDescription": "A timeless Italian classic featuring a perfectly crisp crust, creamy fresh mozzarella, and aromatic basil leaves drizzled with extra virgin olive oil. This traditional Neapolitan-style pizza embodies the essence of Italian cuisine.",
+      "price": 14.99,
+      "category": "Pizza",
+      "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "item-2",
+      "restaurantId": "rest-1",
+      "name": "Spaghetti Carbonara",
+      "description": "Creamy pasta with bacon and parmesan",
+      "aiDescription": "Indulge in this rich and creamy Roman classic, featuring al dente spaghetti tossed with crispy pancetta, eggs, and freshly grated Parmigiano-Reggiano. A decadent comfort food that's both elegant and satisfying.",
+      "price": 16.99,
+      "category": "Pasta",
+      "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "item-3",
+      "restaurantId": "rest-1",
+      "name": "Caesar Salad",
+      "description": "Fresh romaine lettuce with caesar dressing",
+      "price": 9.99,
+      "category": "Salads",
+      "image": "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "item-4",
+      "restaurantId": "rest-1",
+      "name": "Tiramisu",
+      "description": "Classic Italian dessert",
+      "aiDescription": "A heavenly Italian dessert featuring layers of coffee-soaked ladyfingers, rich mascarpone cream, and a dusting of cocoa powder. This elegant treat melts in your mouth with every spoonful.",
+      "price": 7.99,
+      "category": "Desserts",
+      "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "item-5",
+      "restaurantId": "rest-1",
+      "name": "Chicken Parmesan",
+      "description": "Breaded chicken with marinara and mozzarella",
+      "price": 18.99,
+      "category": "Main Course",
+      "image": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "item-6",
+      "restaurantId": "rest-2",
+      "name": "Salmon Sashimi",
+      "description": "Fresh Atlantic salmon sashimi",
+      "aiDescription": "Premium Atlantic salmon, expertly sliced and served fresh. Each piece offers a buttery texture and delicate flavor that showcases the quality of our seafood selection.",
+      "price": 12.99,
+      "category": "Sashimi",
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "item-7",
+      "restaurantId": "rest-2",
+      "name": "California Roll",
+      "description": "Crab, avocado, and cucumber roll",
+      "price": 8.99,
+      "category": "Sushi Rolls",
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "item-8",
+      "restaurantId": "rest-2",
+      "name": "Dragon Roll",
+      "description": "Eel, cucumber, and avocado topped with eel sauce",
+      "aiDescription": "An exquisite roll featuring tender eel, crisp cucumber, and creamy avocado, elegantly topped with our signature eel sauce. A favorite among sushi enthusiasts.",
+      "price": 14.99,
+      "category": "Sushi Rolls",
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "item-9",
+      "restaurantId": "rest-2",
+      "name": "Miso Soup",
+      "description": "Traditional Japanese soup",
+      "price": 4.99,
+      "category": "Soups",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "item-10",
+      "restaurantId": "rest-2",
+      "name": "Green Tea Ice Cream",
+      "description": "Traditional Japanese dessert",
+      "price": 5.99,
+      "category": "Desserts",
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400",
+      "isAvailable": true,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "tables": [
+    {
+      "id": "table-1",
+      "restaurantId": "rest-1",
+      "tableNumber": 1,
+      "capacity": 4,
+      "status": "AVAILABLE",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://dineflow.com/menu/rest-1?table=1",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "table-2",
+      "restaurantId": "rest-1",
+      "tableNumber": 2,
+      "capacity": 2,
+      "status": "OCCUPIED",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://dineflow.com/menu/rest-1?table=2",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "table-3",
+      "restaurantId": "rest-1",
+      "tableNumber": 3,
+      "capacity": 6,
+      "status": "AVAILABLE",
+      "qrCode": null,
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "table-4",
+      "restaurantId": "rest-1",
+      "tableNumber": 4,
+      "capacity": 4,
+      "status": "RESERVED",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://dineflow.com/menu/rest-1?table=4",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "updatedAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "table-5",
+      "restaurantId": "rest-2",
+      "tableNumber": 1,
+      "capacity": 4,
+      "status": "AVAILABLE",
+      "qrCode": "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://dineflow.com/menu/rest-2?table=1",
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    },
+    {
+      "id": "table-6",
+      "restaurantId": "rest-2",
+      "tableNumber": 2,
+      "capacity": 2,
+      "status": "AVAILABLE",
+      "qrCode": null,
+      "createdAt": "2024-01-25T10:00:00Z",
+      "updatedAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-1",
+      "restaurantId": "rest-1",
+      "tableId": "table-2",
+      "orderNumber": "ORD-001",
+      "status": "PREPARING",
+      "totalAmount": 45.97,
+      "createdAt": "2024-01-22T14:30:00Z",
+      "updatedAt": "2024-01-22T14:35:00Z",
+      "items": [
+        {
+          "id": "order-item-1",
+          "orderId": "order-1",
+          "menuItemId": "item-1",
+          "quantity": 2,
+          "price": 14.99,
+          "subtotal": 29.98,
+          "menuItem": {
+            "name": "Margherita Pizza"
+          }
+        },
+        {
+          "id": "order-item-2",
+          "orderId": "order-1",
+          "menuItemId": "item-3",
+          "quantity": 1,
+          "price": 9.99,
+          "subtotal": 9.99,
+          "menuItem": {
+            "name": "Caesar Salad"
+          }
+        },
+        {
+          "id": "order-item-3",
+          "orderId": "order-1",
+          "menuItemId": "item-4",
+          "quantity": 1,
+          "price": 7.99,
+          "subtotal": 7.99,
+          "menuItem": {
+            "name": "Tiramisu"
+          }
+        }
+      ]
+    },
+    {
+      "id": "order-2",
+      "restaurantId": "rest-1",
+      "tableId": "table-1",
+      "orderNumber": "ORD-002",
+      "status": "COMPLETED",
+      "totalAmount": 32.98,
+      "createdAt": "2024-01-21T12:00:00Z",
+      "updatedAt": "2024-01-21T13:30:00Z",
+      "items": [
+        {
+          "id": "order-item-4",
+          "orderId": "order-2",
+          "menuItemId": "item-2",
+          "quantity": 1,
+          "price": 16.99,
+          "subtotal": 16.99,
+          "menuItem": {
+            "name": "Spaghetti Carbonara"
+          }
+        },
+        {
+          "id": "order-item-5",
+          "orderId": "order-2",
+          "menuItemId": "item-5",
+          "quantity": 1,
+          "price": 18.99,
+          "subtotal": 18.99,
+          "menuItem": {
+            "name": "Chicken Parmesan"
+          }
+        }
+      ]
+    },
+    {
+      "id": "order-3",
+      "restaurantId": "rest-2",
+      "tableId": "table-5",
+      "orderNumber": "ORD-003",
+      "status": "PENDING",
+      "totalAmount": 26.97,
+      "createdAt": "2024-01-26T18:00:00Z",
+      "updatedAt": "2024-01-26T18:00:00Z",
+      "items": [
+        {
+          "id": "order-item-6",
+          "orderId": "order-3",
+          "menuItemId": "item-6",
+          "quantity": 1,
+          "price": 12.99,
+          "subtotal": 12.99,
+          "menuItem": {
+            "name": "Salmon Sashimi"
+          }
+        },
+        {
+          "id": "order-item-7",
+          "orderId": "order-3",
+          "menuItemId": "item-7",
+          "quantity": 2,
+          "price": 8.99,
+          "subtotal": 17.98,
+          "menuItem": {
+            "name": "California Roll"
+          }
+        }
+      ]
+    }
+  ],
+  "bills": [
+    {
+      "id": "bill-1",
+      "restaurantId": "rest-1",
+      "orderId": "order-2",
+      "billNumber": "BILL-001",
+      "subtotal": 32.98,
+      "tax": 2.64,
+      "discount": 0,
+      "total": 35.62,
+      "paymentMethod": "Credit Card",
+      "paidAt": "2024-01-21T13:30:00Z",
+      "createdAt": "2024-01-21T13:30:00Z",
+      "order": {
+        "orderNumber": "ORD-002",
+        "table": {
+          "tableNumber": 1
+        }
+      }
+    }
+  ],
+  "restaurantStats": {
+    "rest-1": {
+      "totalRevenue": 78.59,
+      "totalOrders": 2,
+      "totalTables": 4,
+      "totalMenuItems": 5
+    },
+    "rest-2": {
+      "totalRevenue": 26.97,
+      "totalOrders": 1,
+      "totalTables": 2,
+      "totalMenuItems": 5
+    }
+  },
+  "subscriptionPlans": [
+    {
+      "id": "plan-basic",
+      "name": "Basic",
+      "description": "Perfect for small restaurants",
+      "monthlyPrice": 29.99,
+      "yearlyPrice": 299.99,
+      "features": [
+        "Up to 5 tables",
+        "Basic menu management",
+        "Order tracking",
+        "Email support",
+        "Basic analytics"
+      ],
+      "isActive": true,
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "plan-professional",
+      "name": "Professional",
+      "description": "Ideal for growing businesses",
+      "monthlyPrice": 79.99,
+      "yearlyPrice": 799.99,
+      "features": [
+        "Unlimited tables",
+        "Advanced menu management",
+        "Real-time order tracking",
+        "Priority support",
+        "Advanced analytics",
+        "QR code generation",
+        "Custom branding"
+      ],
+      "isActive": true,
+      "popular": true,
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "plan-enterprise",
+      "name": "Enterprise",
+      "description": "For large restaurant chains",
+      "monthlyPrice": 199.99,
+      "yearlyPrice": 1999.99,
+      "features": [
+        "Everything in Professional",
+        "Multi-location support",
+        "Dedicated account manager",
+        "24/7 phone support",
+        "Custom integrations",
+        "White-label solution",
+        "API access",
+        "Advanced reporting"
+      ],
+      "isActive": true,
+      "createdAt": "2024-01-15T10:00:00Z"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub-1",
+      "restaurantId": "rest-1",
+      "planId": "plan-professional",
+      "status": "active",
+      "billingCycle": "monthly",
+      "startDate": "2024-01-20T10:00:00Z",
+      "endDate": "2024-02-20T10:00:00Z",
+      "nextBillingDate": "2024-02-20T10:00:00Z",
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "sub-2",
+      "restaurantId": "rest-2",
+      "planId": "plan-basic",
+      "status": "active",
+      "billingCycle": "monthly",
+      "startDate": "2024-01-25T10:00:00Z",
+      "endDate": "2024-02-25T10:00:00Z",
+      "nextBillingDate": "2024-02-25T10:00:00Z",
+      "createdAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "apiKeys": [
+    {
+      "id": "key-1",
+      "name": "Production API Key",
+      "description": "Main production API key for mobile app",
+      "key": "df_live_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+      "keyPrefix": "df_live_a1b2c3d4",
+      "permissions": {
+        "restaurants": true,
+        "orders": true,
+        "menu": true,
+        "analytics": true,
+        "billing": false
+      },
+      "rateLimit": {
+        "requests": 1000,
+        "period": "hour"
+      },
+      "status": "active",
+      "lastUsed": "2024-01-26T18:30:00Z",
+      "usageCount": 15234,
+      "createdAt": "2024-01-15T10:00:00Z",
+      "expiresAt": null,
+      "ipWhitelist": ["192.168.1.100", "10.0.0.1"]
+    },
+    {
+      "id": "key-2",
+      "name": "Development Key",
+      "description": "API key for development environment",
+      "key": "df_test_x9y8z7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1",
+      "keyPrefix": "df_test_x9y8z7w6",
+      "permissions": {
+        "restaurants": true,
+        "orders": true,
+        "menu": true,
+        "analytics": false,
+        "billing": false
+      },
+      "rateLimit": {
+        "requests": 500,
+        "period": "hour"
+      },
+      "status": "active",
+      "lastUsed": "2024-01-26T12:00:00Z",
+      "usageCount": 3421,
+      "createdAt": "2024-01-16T10:00:00Z",
+      "expiresAt": null
+    },
+    {
+      "id": "key-3",
+      "name": "Webhook Key",
+      "description": "API key for webhook integrations",
+      "key": "df_webhook_m5n6o7p8q9r0s1t2u3v4w5x6y7z8a9b0c1d2",
+      "keyPrefix": "df_webhook_m5n6o7p8",
+      "permissions": {
+        "restaurants": false,
+        "orders": true,
+        "menu": false,
+        "analytics": false,
+        "billing": true
+      },
+      "rateLimit": {
+        "requests": 100,
+        "period": "minute"
+      },
+      "status": "active",
+      "lastUsed": "2024-01-26T17:45:00Z",
+      "usageCount": 8765,
+      "createdAt": "2024-01-17T10:00:00Z",
+      "expiresAt": "2024-04-17T10:00:00Z"
+    }
+  ],
+  "loyaltyPrograms": [
+    {
+      "id": "loyalty-1",
+      "restaurantId": "rest-1",
+      "restaurantName": "Italian Bistro",
+      "name": "Italian Bistro Rewards",
+      "description": "Earn points and redeem rewards at Italian Bistro",
+      "type": "points",
+      "rules": {
+        "pointsPerDollar": 1,
+        "pointsPerOrder": 10
+      },
+      "rewards": [
+        {
+          "id": "reward-1-1",
+          "name": "$5 Off",
+          "pointsRequired": 100,
+          "discount": 5,
+          "description": "Get $5 off your next order"
+        },
+        {
+          "id": "reward-1-2",
+          "name": "Free Appetizer",
+          "pointsRequired": 200,
+          "freeItem": "Appetizer",
+          "description": "Free appetizer with your order"
+        },
+        {
+          "id": "reward-1-3",
+          "name": "20% Off",
+          "pointsRequired": 300,
+          "discount": 20,
+          "description": "Get 20% off your entire order"
+        }
+      ],
+      "status": "active",
+      "totalMembers": 245,
+      "totalPointsIssued": 12500,
+      "totalPointsRedeemed": 8500,
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "loyalty-2",
+      "restaurantId": "rest-2",
+      "restaurantName": "Sushi House",
+      "name": "Sushi House Rewards",
+      "description": "Earn stamps and get free sushi",
+      "type": "stamps",
+      "rules": {
+        "stampsRequired": 10
+      },
+      "rewards": [
+        {
+          "id": "reward-2-1",
+          "name": "Free California Roll",
+          "pointsRequired": 10,
+          "freeItem": "California Roll",
+          "description": "Free California Roll after 10 stamps"
+        }
+      ],
+      "status": "active",
+      "totalMembers": 180,
+      "totalPointsIssued": 8900,
+      "totalPointsRedeemed": 5600,
+      "createdAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "coupon-1",
+      "code": "WELCOME10",
+      "restaurantId": "rest-1",
+      "restaurantName": "Italian Bistro",
+      "name": "Welcome 10% Off",
+      "description": "Special welcome discount for new customers",
+      "type": "percentage",
+      "value": 10,
+      "minOrderAmount": 25,
+      "maxDiscount": 15,
+      "validFrom": "2024-01-20T00:00:00Z",
+      "validUntil": "2024-03-20T23:59:59Z",
+      "usageLimit": 500,
+      "usedCount": 127,
+      "status": "active",
+      "applicableTo": "new_customers",
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "coupon-2",
+      "code": "SAVE20",
+      "restaurantId": "rest-1",
+      "restaurantName": "Italian Bistro",
+      "name": "Save $20",
+      "description": "Get $20 off orders over $50",
+      "type": "fixed",
+      "value": 20,
+      "minOrderAmount": 50,
+      "validFrom": "2024-01-22T00:00:00Z",
+      "validUntil": "2024-02-22T23:59:59Z",
+      "usageLimit": 200,
+      "usedCount": 45,
+      "status": "active",
+      "applicableTo": "all",
+      "createdAt": "2024-01-22T10:00:00Z"
+    },
+    {
+      "id": "coupon-3",
+      "code": "SUSHI15",
+      "restaurantId": "rest-2",
+      "restaurantName": "Sushi House",
+      "name": "Sushi 15% Off",
+      "description": "15% discount on all sushi orders",
+      "type": "percentage",
+      "value": 15,
+      "minOrderAmount": 30,
+      "maxDiscount": 25,
+      "validFrom": "2024-01-25T00:00:00Z",
+      "validUntil": "2024-04-25T23:59:59Z",
+      "usageLimit": 300,
+      "usedCount": 78,
+      "status": "active",
+      "applicableTo": "all",
+      "createdAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "posIntegrations": [
+    {
+      "id": "pos-1",
+      "restaurantId": "rest-1",
+      "restaurantName": "Italian Bistro",
+      "provider": "square",
+      "providerName": "Square",
+      "status": "connected",
+      "lastSync": "2024-01-26T18:30:00Z",
+      "syncFrequency": "realtime",
+      "syncDirection": "bidirectional",
+      "menuSyncEnabled": true,
+      "orderSyncEnabled": true,
+      "paymentSyncEnabled": true,
+      "inventorySyncEnabled": false,
+      "apiKey": "sk_live_a1b2c3d4e5f6g7h8",
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "pos-2",
+      "restaurantId": "rest-2",
+      "restaurantName": "Sushi House",
+      "provider": "toast",
+      "providerName": "Toast",
+      "status": "connected",
+      "lastSync": "2024-01-26T17:45:00Z",
+      "syncFrequency": "5min",
+      "syncDirection": "pos_to_dineflow",
+      "menuSyncEnabled": true,
+      "orderSyncEnabled": true,
+      "paymentSyncEnabled": false,
+      "inventorySyncEnabled": true,
+      "apiKey": "toast_api_key_xyz123",
+      "createdAt": "2024-01-25T10:00:00Z"
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "log-1",
+      "userId": "admin-1",
+      "userName": "Admin User",
+      "userEmail": "admin@gmail.com",
+      "action": "restaurant.created",
+      "resourceType": "restaurant",
+      "resourceId": "rest-1",
+      "resourceName": "Italian Bistro",
+      "details": "Created new restaurant: Italian Bistro",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+      "createdAt": "2024-01-20T10:00:00Z"
+    },
+    {
+      "id": "log-2",
+      "userId": "admin-1",
+      "userName": "Admin User",
+      "userEmail": "admin@gmail.com",
+      "action": "owner.created",
+      "resourceType": "owner",
+      "resourceId": "owner-1",
+      "resourceName": "Marco Rossi",
+      "details": "Created new owner account for Italian Bistro",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+      "createdAt": "2024-01-20T10:05:00Z"
+    },
+    {
+      "id": "log-3",
+      "userId": "owner-1",
+      "userName": "Marco Rossi",
+      "userEmail": "owner@italianbistro.com",
+      "action": "menu_item.created",
+      "resourceType": "menu_item",
+      "resourceId": "item-1",
+      "resourceName": "Margherita Pizza",
+      "details": "Added new menu item: Margherita Pizza",
+      "ipAddress": "192.168.1.101",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "createdAt": "2024-01-20T11:00:00Z"
+    },
+    {
+      "id": "log-4",
+      "userId": "admin-1",
+      "userName": "Admin User",
+      "userEmail": "admin@gmail.com",
+      "action": "restaurant.status.updated",
+      "resourceType": "restaurant",
+      "resourceId": "rest-1",
+      "resourceName": "Italian Bistro",
+      "details": "Updated restaurant status to active",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+      "createdAt": "2024-01-21T09:00:00Z"
+    },
+    {
+      "id": "log-5",
+      "userId": "owner-2",
+      "userName": "Yuki Tanaka",
+      "userEmail": "owner@sushihouse.com",
+      "action": "order.created",
+      "resourceType": "order",
+      "resourceId": "order-3",
+      "resourceName": "ORD-003",
+      "details": "Created new order: ORD-003",
+      "ipAddress": "192.168.1.102",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0)",
+      "createdAt": "2024-01-26T18:00:00Z"
+    }
+  ]
+}
+
